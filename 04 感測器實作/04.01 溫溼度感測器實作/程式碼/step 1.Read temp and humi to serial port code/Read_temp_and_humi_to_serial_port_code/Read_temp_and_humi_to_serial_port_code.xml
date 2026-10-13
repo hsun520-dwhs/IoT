@@ -1,0 +1,125 @@
+<xml version="F2" board="LinkIt 7697" xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="i706z*6ex~R:Pi9mhx~p">temp</variable>
+    <variable id="5=qEm$I2M-C8Z)-)ioKJ">humi</variable>
+  </variables>
+  <block type="board_initializes_setup" id="0" x="100" y="50">
+    <field name="BOARD_TYPE">7697</field>
+    <statement name="CONTENT">
+      <block type="serial_init" id="k^HasovPH^tfrG[~0[|t">
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="variables_set" id="yo7K1N^{@VsAfNa^,TRl">
+            <field name="POSITION">global</field>
+            <field name="TYPE">float</field>
+            <field name="VAR" id="i706z*6ex~R:Pi9mhx~p">temp</field>
+            <value name="VALUE">
+              <shadow type="math_number" id="[(6#$MMt)_ak^;af1RD*">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="variables_set" id="h:Gs{AC?Z??e2M:[sS4=">
+                <field name="POSITION">global</field>
+                <field name="TYPE">float</field>
+                <field name="VAR" id="5=qEm$I2M-C8Z)-)ioKJ">humi</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="9y~!l=hd$wW*Zg3F$L1a">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="initializes_loop" id="1">
+        <statement name="CONTENT">
+          <block type="variables_set3" id="krSfUYsVF*RviOOSU`yM">
+            <field name="VAR" id="i706z*6ex~R:Pi9mhx~p">temp</field>
+            <value name="DELTA">
+              <shadow type="math_number" id="vk/UcJkX@KXjL6^JjA;J">
+                <field name="NUM">0</field>
+              </shadow>
+              <block type="dht_read_pin" id="N%4u,v%zaI-0F3Cs$U!)">
+                <field name="SENSOR">DHT11</field>
+                <field name="TYPE">C</field>
+                <value name="PIN">
+                  <block type="math_number" id="2aNojbq#K!/E,z.,lAJe">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set3" id="n$3,IU?zwBugKS@nQv])">
+                <field name="VAR" id="5=qEm$I2M-C8Z)-)ioKJ">humi</field>
+                <value name="DELTA">
+                  <shadow type="math_number" id="$TFDMqK{S(0^j[I=5vA|">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="dht_read_pin" id="S9[br0?^01fn|yQTdV1o">
+                    <field name="SENSOR">DHT11</field>
+                    <field name="TYPE">h</field>
+                    <value name="PIN">
+                      <block type="math_number" id=".nbX^M;RfC%/mI~!^9un">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_print" id="38ksq^6n9OSI:w9P~L~v">
+                    <value name="CONTENT">
+                      <block type="text" id="{y5r~*Y^9h.wb(P;N_Do">
+                        <field name="TEXT">溫度：</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="serial_print" id="fCcZf@RamMcrtCWqOPTz">
+                        <value name="CONTENT">
+                          <block type="variables_get" id=":~[?YPGzB6).V~q:=Auo">
+                            <field name="VAR" id="i706z*6ex~R:Pi9mhx~p">temp</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_print" id="@u//kA|h^qX75?-iqa?,">
+                            <value name="CONTENT">
+                              <block type="text" id="G]x3Z%HZ[_!WpJRCu%3n">
+                                <field name="TEXT">溼度：</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="serial_print" id="Yf[c@c`a|7UHk/(ZmKbG">
+                                <value name="CONTENT">
+                                  <block type="variables_get" id="Fz91++y(UgSWFI!KKy,W">
+                                    <field name="VAR" id="5=qEm$I2M-C8Z)-)ioKJ">humi</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="delay_custom" id="Hs6-]aO3pndMnW4]@ke^">
+                                    <value name="DELAY_TIME">
+                                      <block type="math_number" id="cs6U,7=s!@SWBib2~JI_">
+                                        <field name="NUM">1000</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>
