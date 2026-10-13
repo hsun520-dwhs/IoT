@@ -1,0 +1,309 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="9a9{Dzfo^J+EQGzG5,k0">servo1</variable>
+    <variable id="r#udp91:.~f^ieuFNoe+">angle</variable>
+  </variables>
+  <block type="board_initializes_setup" id="0" x="350" y="50">
+    <field name="BOARD_TYPE">7697</field>
+    <statement name="CONTENT">
+      <block type="ljj_servo_init" id="Av:}gW%:`VzFezg8=6r[">
+        <field name="varName" id="9a9{Dzfo^J+EQGzG5,k0">servo1</field>
+        <value name="PIN">
+          <block type="math_number" id="Dr_BevsaOFt$1WR-ZBwl">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="^W~a*Az|vRD0lZd9!-Z#">
+            <field name="POSITION">global</field>
+            <field name="TYPE">int</field>
+            <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+            <value name="VALUE">
+              <shadow type="math_number" id="4k{%M:iJut!P6S[f:uga">
+                <field name="NUM">90</field>
+              </shadow>
+              <block type="math_number" id="@;Y=MtC^(%;fV8J2/-uv">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <next>
+              <block type="ljj_servo_write_pin" id="7@oTrCysGQ/kS}#Fb8ef">
+                <field name="varName" id="9a9{Dzfo^J+EQGzG5,k0">servo1</field>
+                <value name="ANGLE">
+                  <block type="variables_get" id="sA@O2cKBHw+_LBxn/a(i">
+                    <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="oled_display_setting" id="3:Ugar(aX(%QMj=x2e|y">
+                    <field name="CHIPSET">SSD1306</field>
+                    <field name="PIN">PIN</field>
+                    <field name="RESOLUTION">128x64</field>
+                    <next>
+                      <block type="serial_init" id="0Li9Z4`txeLD%;yb=h~7">
+                        <field name="SPEED">9600</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="initializes_loop" id="1">
+        <statement name="CONTENT">
+          <block type="startPlus_button" id="Bsv06^^DpLfL8q{nI=TL">
+            <field name="AB_BUTTON">A</field>
+            <statement name="MSG_BUTTON_CALL">
+              <block type="variables_set3" id="RjI|LU^ksys0PBYf#C%k">
+                <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                <value name="DELTA">
+                  <shadow type="math_number" id="v-*ul]u@=-tlBcP{)O(g">
+                    <field name="NUM">090</field>
+                  </shadow>
+                  <block type="math_number" id="J{h#nQ`A0T5rgXgp;B~x">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="ljj_servo_write_pin" id="90-m$_@:OG5XL*Nb{=hD">
+                    <field name="varName" id="9a9{Dzfo^J+EQGzG5,k0">servo1</field>
+                    <value name="ANGLE">
+                      <block type="variables_get" id="Bt!Y0G$an%oB8ZyH-fje">
+                        <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="serial_println" id="!90ilhy5PaMlZKPMk%=J">
+                        <value name="CONTENT">
+                          <block type="text_join" id="JJY;62Gx=Dh,!9EW_]j4">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="text" id="0Z+Y`=`=S$ze|u${fH7j">
+                                <field name="TEXT">馬達角度：</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="variables_get" id="8[-k-BF*V@zL+Q@-XlhC">
+                                <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="oled_display_draw_commands" id="v;$s=_3tMaNC64bACBU]">
+                            <statement name="DRAW_CMD">
+                              <block type="oled_display_draw_text" id=":!6A;g,kB4B5A)v|A`NB">
+                                <value name="START_X">
+                                  <block type="math_number" id="FC2iz1vQa1d%hMEVXgC~">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="START_Y">
+                                  <block type="math_number" id="q$)08(G9fJk)eNj#hGYq">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="CONTENT">
+                                  <block type="text_join" id="@]VlOsH/G~ao_ZQKFmmd">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="text" id="C^0HZQWj7*@B59[*Qo^7">
+                                        <field name="TEXT">angle:</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="variables_get" id="/s~7gi];.)3|3YA_vAZp">
+                                        <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="startPlus_button" id="LTr|^YW!E{`^$vawc{fz">
+                <field name="AB_BUTTON">B</field>
+                <statement name="MSG_BUTTON_CALL">
+                  <block type="variables_set3" id="(:SEs4ldWIpZAX@UCb)r">
+                    <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                    <value name="DELTA">
+                      <shadow type="math_number" id="n[S)s;~j64VNxFvaQDwg">
+                        <field name="NUM">90</field>
+                      </shadow>
+                      <block type="math_number" id="G.anYERda?uza|xTGyv`">
+                        <field name="NUM">180</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="ljj_servo_write_pin" id="44b%ejqCn.m8Z[[evV(l">
+                        <field name="varName" id="9a9{Dzfo^J+EQGzG5,k0">servo1</field>
+                        <value name="ANGLE">
+                          <block type="variables_get" id=",]$_@bMXoY]NKJZrPbA.">
+                            <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_println" id="GoAsm(N)j,/c8E0L1iv;">
+                            <value name="CONTENT">
+                              <block type="text_join" id="4)#+[]ji(]cRQy=lS#)G">
+                                <mutation items="2"></mutation>
+                                <value name="ADD0">
+                                  <block type="text" id="gZBRydLa|aO=Xjf!1w,R">
+                                    <field name="TEXT">馬達角度：</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="variables_get" id="+0!=0GO?pu))@ldt-9(c">
+                                    <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="oled_display_draw_commands" id="UA=QAltZXlM!C3Z:b]G8">
+                                <statement name="DRAW_CMD">
+                                  <block type="oled_display_draw_text" id="K!ce~_l8S9b4x)`5TaAv">
+                                    <value name="START_X">
+                                      <block type="math_number" id=",MQOdt`3.UHB-U#.$Jse">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="START_Y">
+                                      <block type="math_number" id="_Tb]zZF6xL@p28{=L-Hv">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="CONTENT">
+                                      <block type="text_join" id="%_injDe!,`6VqBI?^Jl-">
+                                        <mutation items="2"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="#15Wn:4]ncN1!|Q?5eh.">
+                                            <field name="TEXT">angle:</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="variables_get" id="}+IC09%/{d}z;g,`R(A|">
+                                            <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="startPlus_button" id=")|V-U`JZ{Jv+3-|9}aOI">
+                    <field name="AB_BUTTON">C</field>
+                    <statement name="MSG_BUTTON_CALL">
+                      <block type="variables_set3" id="rgxMy:FC.I5t6G[X7gm2">
+                        <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                        <value name="DELTA">
+                          <shadow type="math_number" id="bcJlzaz$W/y-U(jADwaK">
+                            <field name="NUM">90</field>
+                          </shadow>
+                          <block type="math_number" id="qfS{t9GMM(N!!Z8JMx|b">
+                            <field name="NUM">90</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="ljj_servo_write_pin" id="*52nejrb50b|W/t2GJAK">
+                            <field name="varName" id="9a9{Dzfo^J+EQGzG5,k0">servo1</field>
+                            <value name="ANGLE">
+                              <block type="variables_get" id="cb)Z!ZEkt!ZLq:@-!C,.">
+                                <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="serial_println" id="@^moJ4uLGMmTLB?xAa@2">
+                                <value name="CONTENT">
+                                  <block type="text_join" id="zz[S.,+I,:yZ6]f$1_!#">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="text" id="dX`K4,a[)aWbt,JU-;4~">
+                                        <field name="TEXT">馬達角度：</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="variables_get" id=",{Frocq$`0QsA9}mKU42">
+                                        <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="oled_display_draw_commands" id=":`co6s,26M[GPN-HvQpl">
+                                    <statement name="DRAW_CMD">
+                                      <block type="oled_display_draw_text" id="NMWHW06E;dyeNpHpfp:r">
+                                        <value name="START_X">
+                                          <block type="math_number" id="MgU!4DOOx8gvn#+E%V.W">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                        <value name="START_Y">
+                                          <block type="math_number" id="fi-;/msN!QFpI`*$X,=c">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                        <value name="CONTENT">
+                                          <block type="text_join" id="vcCM?%%.Ttujn:[xzF!S">
+                                            <mutation items="2"></mutation>
+                                            <value name="ADD0">
+                                              <block type="text" id="ULGxCfKJllBywqtDk=Mh">
+                                                <field name="TEXT">angle:</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD1">
+                                              <block type="variables_get" id="yIoV~2AY$OGyf-NW/[:_">
+                                                <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="delay_custom" id="]K{x:^m7LtTFB.Ae6@jL">
+                        <value name="DELAY_TIME">
+                          <block type="math_number" id="(Y`u%7mI!HOmVb8wGaHH">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>
