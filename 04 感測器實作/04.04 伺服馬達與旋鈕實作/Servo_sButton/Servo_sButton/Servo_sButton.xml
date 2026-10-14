@@ -1,0 +1,156 @@
+<xml version="F2" board="LinkIt 7697" xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="9a9{Dzfo^J+EQGzG5,k0">servo1</variable>
+    <variable id="r#udp91:.~f^ieuFNoe+">angle</variable>
+  </variables>
+  <block type="board_initializes_setup" id="0" x="290" y="10">
+    <field name="BOARD_TYPE">7697</field>
+    <statement name="CONTENT">
+      <block type="ljj_servo_init" id="Av:}gW%:`VzFezg8=6r[">
+        <field name="varName" id="9a9{Dzfo^J+EQGzG5,k0">servo1</field>
+        <value name="PIN">
+          <block type="math_number" id="Dr_BevsaOFt$1WR-ZBwl">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="^W~a*Az|vRD0lZd9!-Z#">
+            <field name="POSITION">global</field>
+            <field name="TYPE">int</field>
+            <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+            <value name="VALUE">
+              <shadow type="math_number" id="4k{%M:iJut!P6S[f:uga">
+                <field name="NUM">90</field>
+              </shadow>
+              <block type="math_number" id="@;Y=MtC^(%;fV8J2/-uv">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <next>
+              <block type="ljj_servo_write_pin" id="7@oTrCysGQ/kS}#Fb8ef">
+                <field name="varName" id="9a9{Dzfo^J+EQGzG5,k0">servo1</field>
+                <value name="ANGLE">
+                  <block type="variables_get" id="sA@O2cKBHw+_LBxn/a(i">
+                    <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="oled_display_setting" id="3:Ugar(aX(%QMj=x2e|y">
+                    <field name="CHIPSET">SSD1306</field>
+                    <field name="PIN">PIN</field>
+                    <field name="RESOLUTION">128x64</field>
+                    <next>
+                      <block type="serial_init" id="0Li9Z4`txeLD%;yb=h~7">
+                        <field name="SPEED">9600</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="initializes_loop" id="1">
+        <statement name="CONTENT">
+          <block type="variables_set3" id="RjI|LU^ksys0PBYf#C%k">
+            <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+            <value name="DELTA">
+              <shadow type="math_number" id="v-*ul]u@=-tlBcP{)O(g">
+                <field name="NUM">090</field>
+              </shadow>
+              <block type="math_map_int" id="F-5@Dw]qT0yMO-er^kH*">
+                <field name="FROMLOW">0</field>
+                <field name="FROMHIGH">4090</field>
+                <field name="TOLOW">0</field>
+                <field name="TOHIGH">180</field>
+                <value name="VALUE">
+                  <block type="inout_custom_analog_read" id="T%wh+80O3bYerek{Wem;">
+                    <value name="PIN_ANALOGREAD">
+                      <block type="math_number" id="xRA9oATcaT#-WqLxEs9|">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="ljj_servo_write_pin" id="90-m$_@:OG5XL*Nb{=hD">
+                <field name="varName" id="9a9{Dzfo^J+EQGzG5,k0">servo1</field>
+                <value name="ANGLE">
+                  <block type="variables_get" id="Bt!Y0G$an%oB8ZyH-fje">
+                    <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_println" id="!90ilhy5PaMlZKPMk%=J">
+                    <value name="CONTENT">
+                      <block type="text_join" id="JJY;62Gx=Dh,!9EW_]j4">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="0Z+Y`=`=S$ze|u${fH7j">
+                            <field name="TEXT">馬達角度：</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="variables_get" id="8[-k-BF*V@zL+Q@-XlhC">
+                            <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="oled_display_draw_commands" id="v;$s=_3tMaNC64bACBU]">
+                        <statement name="DRAW_CMD">
+                          <block type="oled_display_draw_text" id=":!6A;g,kB4B5A)v|A`NB">
+                            <value name="START_X">
+                              <block type="math_number" id="FC2iz1vQa1d%hMEVXgC~">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="START_Y">
+                              <block type="math_number" id="q$)08(G9fJk)eNj#hGYq">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="CONTENT">
+                              <block type="text_join" id="@]VlOsH/G~ao_ZQKFmmd">
+                                <mutation items="2"></mutation>
+                                <value name="ADD0">
+                                  <block type="text" id="C^0HZQWj7*@B59[*Qo^7">
+                                    <field name="TEXT">angle:</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="variables_get" id="/s~7gi];.)3|3YA_vAZp">
+                                    <field name="VAR" id="r#udp91:.~f^ieuFNoe+">angle</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="delay_custom" id="8BB:{1GPR]s-}H7|4t4R">
+                            <value name="DELAY_TIME">
+                              <block type="math_number" id="5aVJ-0{Ln]hF4ye7yDGL">
+                                <field name="NUM">100</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>
