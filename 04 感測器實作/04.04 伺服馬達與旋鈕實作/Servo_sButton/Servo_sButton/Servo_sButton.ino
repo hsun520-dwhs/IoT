@@ -1,4 +1,4 @@
-//Generated Date: Wed, 14 Oct 2026 08:45:21 GMT
+//Generated Date: Wed, 14 Oct 2026 08:51:18 GMT
 
 int angle = 90;
 #include <Servo.h>
@@ -25,7 +25,7 @@ void setup()
 
 void loop()
 {
-  angle = map(analogRead(2),0,4090,0,180);
+  angle = map(analogRead(16),0,4090,0,180);
   servo1.write(angle);
   Serial.println((String("馬達角度：")+String(angle)));
   u8g2.firstPage();

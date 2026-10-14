@@ -70,7 +70,7 @@
                   <block type="inout_custom_analog_read" id="T%wh+80O3bYerek{Wem;">
                     <value name="PIN_ANALOGREAD">
                       <block type="math_number" id="xRA9oATcaT#-WqLxEs9|">
-                        <field name="NUM">2</field>
+                        <field name="NUM">16</field>
                       </block>
                     </value>
                   </block>
